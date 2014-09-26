@@ -13,15 +13,31 @@ public class FogTrigger : MonoBehaviour
 	void Update () {
 	
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        fogSett.ApplySettings();
+    }
 }
 
 [System.Serializable]
 public class FogSettings
 {
-    public Color ambientLight;
-    public float FlareFadeSpeed;
-    public float FlareStrength;
     
+    // TODO: Use Reflection to get RenderSettings
+    // TODO: Add tickboxes to allow selective application
+
+    public Color ambientLight;
+    public float FlareStrength;
+    public float FlareFadeSpeed;
+
+    [HideInInspector]
+    public bool applyAmbientLight;
+    [HideInInspector]
+    public bool applyFlareStrength;
+    [HideInInspector]
+    public bool applyFlareFadeSpeed;
+
     public bool FogEnabled;
     public Color FogColor;
     public float FogDensity;
@@ -29,8 +45,26 @@ public class FogSettings
     public FogMode FogMode;
     public float FogStartDistance;
 
+    [HideInInspector]
+    public bool applyFogEnabled;
+    [HideInInspector]
+    public bool applyFogColor;
+    [HideInInspector]
+    public bool applyFogDensity;
+    [HideInInspector]
+    public bool applyFogEndDistance;
+    [HideInInspector]
+    public bool applyFogMode;
+    [HideInInspector]
+    public bool applyFogDist;
+
     public float HaloStrength;
     public Material Skybox;
+
+    [HideInInspector]
+    public bool applyHaloStrength;
+    [HideInInspector]
+    public bool applySkybox;
 
     public void ApplySettings()
     {
